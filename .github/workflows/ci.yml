@@ -10,7 +10,7 @@ on:
     branches: 
       - main
     paths-ignore: 
-      - '**.md'
+      - '**/*.md'
 
 jobs:
   main:
@@ -21,10 +21,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Mock Dependabot Metadata for Testing
+        id: mock-metadata
+        run: |
+          echo "DEPENDABOT_METADATA={\"update-type\":\"version-update:semver-minor\",\"dependency-name\":\"some-dependency\",\"current-version\":\"1.0.0\",\"new-version\":\"1.1.0\"}" >> $GITHUB_ENV
+
       - name: Test Dependabot PR Manager Action
         uses: ./
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           skip-commit-verification: "true"
           skip-verification: "true"
-        
+        env:
+          DEPENDABOT_METADATA: ${{ env.DEPENDABOT_METADATA }}
