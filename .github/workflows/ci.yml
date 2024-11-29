@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore: 
+      - '**/*.md'
+  pull_request:
+    branches: 
+      - main
+    paths-ignore: 
+      - '**.md'
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    permissions: 
+      pull-requests: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Test action
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-commit-verification: "true"
+          skip-verification: "true"
+        
