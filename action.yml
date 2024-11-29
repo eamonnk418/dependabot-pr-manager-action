@@ -1,20 +1,30 @@
-name: Dependabot PR Manager
-author: eamonnk418
-description: Approve and auto-merge Dependabot pull requests selectively based on metadata and update type.
+name: "Dependabot PR Manager"
+author: "eamonnk418"
+description: "Approve and auto-merge Dependabot pull requests selectively based on metadata and update type."
 inputs:
   github-token:
     required: true
-    description: GitHub token for authentication.
-    default: ${{ github.token }}
+    description: "GitHub token for authentication."
+    default: "${{ github.token }}"
+  skip-commit-verification:
+    required: false
+    description: "Skip commit verification. Useful for testing."
+    default: "false"
+  skip-verification:
+    required: false
+    description: "Skip verification. Useful for testing."
+    default: "false"
 runs:
-  using: composite
+  using: "composite"
   steps:
-    - name: Fetch Metadata from Dependabot PRs
+    - name: "Fetch Metadata from Dependabot PRs"
       id: dependabot-metadata
       uses: dependabot/fetch-metadata@dbb049abf0d677abbd7f7eee0375145b417fdd34 # v2.2.0
       with:
         alert-lookup: true
         compat-lookup: true
-        github-token: ${{ inputs.github-token }}
+        github-token: "${{ inputs.github-token }}"
+        skip-commit-verification: "${{ inputs.skip-commit-verification }}"
+        skip-verification: "${{ inputs.skip-verification }}"
 
             
