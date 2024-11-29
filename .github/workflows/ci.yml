@@ -12,22 +12,14 @@ on:
     paths-ignore: 
       - '**.md'
 
-concurrency: 
-  cancel-in-progress: true
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
-
-
 jobs:
   main:
-    name: Semantic Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: go-semantic-release
-        uses: go-semantic-release/action@v1.23.0
-        id: semantic-release
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test action
+        uses: ./
+
     
       
