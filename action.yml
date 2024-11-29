@@ -1,0 +1,20 @@
+name: Dependabot PR Manager
+author: eamonnk418
+description: Approve and auto-merge Dependabot pull requests selectively based on metadata and update type.
+inputs:
+  github-token:
+    required: true
+    description: GitHub token for authentication.
+    default: ${{ github.token }}
+runs:
+  using: composite
+  steps:
+    - name: Fetch Metadata from Dependabot PRs
+      id: dependabot-metadata
+      uses: dependabot/fetch-metadata@dbb049abf0d677abbd7f7eee0375145b417fdd34 # v2.2.0
+      with:
+        alert-lookup: true
+        compat-lookup: true
+        github-token: ${{ input.github-token }}
+
+            
