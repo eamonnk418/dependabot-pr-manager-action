@@ -19,4 +19,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Test action
-        uses: eamonnk418/dependabot-pr-manager-action@${{ github.event.pull_request.head.sha }}
+        uses: eamonnk418/dependabot-pr-manager-action@main
+        
