@@ -15,6 +15,6 @@ runs:
       with:
         alert-lookup: true
         compat-lookup: true
-        github-token: ${{ input.github-token }}
+        github-token: ${{ inputs.github-token }}
 
             
