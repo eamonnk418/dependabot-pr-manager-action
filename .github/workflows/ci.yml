@@ -26,6 +26,6 @@ jobs:
       - name: Checkout dependabot-pr-manager-action-test repo
         uses: actions/checkout@v3
         with:
-          repository: "eamonnk418/dependabot-pr-manager-action-test"
-          path: "dependabot-pr-manager-action-test"
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          repository: eamonnk418/dependabot-pr-manager-action-test
+          path: dependabot-pr-manager-action-test"
+          token: ${{ secrets.GITHUB_TOKEN }}
