@@ -1,9 +1,11 @@
 name: Release
 
 on:
-  push:
-    branches: 
+ push:
+    branches:
       - main
+    paths-ignore: 
+      - '.github/dependabot.yml'
 
 concurrency: 
   group: ${{ github.workflow }}-${{ github.ref }}
