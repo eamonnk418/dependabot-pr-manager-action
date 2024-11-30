@@ -1,0 +1,19 @@
+name: Dependabot PR Manager
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dependabot PR Manager
+        if: ${{ github.event.sender.type == 'Bot' && github.event.pull_request.user.login == 'dependabot[bot]' }}
+        uses: eamonnk418/dependabot-pr-manager-action@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
