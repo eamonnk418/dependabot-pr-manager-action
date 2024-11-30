@@ -1,18 +1,14 @@
-name: Dependabot PR Manager
+name: Dependabot Pull Request
 
-on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
+on: pull_request
 
 jobs:
-  main:
+  dependabot:
+    permissions:
+      pull-requests: read
     runs-on: ubuntu-latest
     steps:
       - name: Dependabot PR Manager
-        uses: eamonnk418/dependabot-pr-manager-action@v1.6.0
+        uses: eamonnk418/dependabot-pr-manager-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

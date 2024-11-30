@@ -1,12 +1,6 @@
 name: Lint PR
 
-on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
+on: pull_request
 
 jobs:
   main:

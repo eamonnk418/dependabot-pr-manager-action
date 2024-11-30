@@ -7,6 +7,7 @@ updates:
     target-branch: dependabot-updates
     pull-request-branch-name:
       separator: "-"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
