@@ -5,12 +5,12 @@ inputs:
   github-token:
     required: true
     description: "GitHub token for authentication."
-    default: "false"
+    default: ${{ github.token }}
 runs:
   using: "composite"
   steps:
     - name: Fetch Metadata from Dependabot PRs
-      if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' && github.event.pull_request.base.repo.full_name == github.repository }}
+      if: ${{ github.pull_request.user.type == 'Bot' }}
       id: dependabot-metadata
       uses: dependabot/fetch-metadata@dbb049abf0d677abbd7f7eee0375145b417fdd34 # v2.2.0
       with:
