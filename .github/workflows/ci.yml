@@ -6,11 +6,13 @@ on:
       - main
     paths-ignore: 
       - '**/*.md'
+      - '.github/dependabot.yml'
   pull_request:
     branches: 
       - main
     paths-ignore: 
       - '**/*.md'
+      - '.github/dependabot.yml'
 
 jobs:
   main:
