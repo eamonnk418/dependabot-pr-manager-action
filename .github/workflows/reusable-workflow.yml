@@ -8,7 +8,7 @@ on:
         description: "GitHub token for authentication."
 
 jobs:
-  dependabot:
+  pr-manager:
     permissions:
       pull-requests: read
     runs-on: ubuntu-latest
