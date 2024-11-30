@@ -5,14 +5,6 @@ inputs:
   github-token:
     required: true
     description: "GitHub token for authentication."
-    default: "${{ github.token }}"
-  skip-commit-verification:
-    required: false
-    description: "Skip commit verification. Useful for testing."
-    default: "false"
-  skip-verification:
-    required: false
-    description: "Skip verification. Useful for testing."
     default: "false"
 runs:
   using: "composite"
@@ -24,7 +16,3 @@ runs:
         alert-lookup: true
         compat-lookup: true
         github-token: "${{ inputs.github-token }}"
-        skip-commit-verification: "${{ inputs.skip-commit-verification }}"
-        skip-verification: "${{ inputs.skip-verification }}"
-
-            
