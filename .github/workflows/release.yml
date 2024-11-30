@@ -1,4 +1,4 @@
-name: Release
+name: "Release"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 concurrency: 
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: "${{ github.workflow }}-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -15,12 +15,12 @@ jobs:
     permissions: 
       contents: write
     steps:
-      - name: Checkout
+      - name: "Checkout"
         uses: actions/checkout@v3
       
-      - name: Semantic Release
+      - name: "Semantic Release"
         uses: go-semantic-release/action@v1.23.0
         id: semantic-release
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
       

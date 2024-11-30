@@ -10,20 +10,38 @@ on:
     branches: 
       - main
     paths-ignore: 
-      - '**.md'
+      - '**/*.md'
 
 jobs:
   main:
     runs-on: ubuntu-latest
-    permissions: 
+    permissions:
+      contents: read
       pull-requests: read
+
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Test action
+
+      - name: Mock Dependabot Metadata
+        run: |
+          echo '{
+            "alertState": "FIXED",
+            "compatibilityScore": 100,
+            "updatedDependencies": [
+              {
+                "dependency-name": "typescript",
+                "dependency-type": "direct:development",
+                "update-type": "version-update:semver-minor"
+              }
+            ]
+          }' > mock_metadata.json
+
+      - name: Test Dependabot PR Manager Action
         uses: ./
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
           skip-commit-verification: "true"
           skip-verification: "true"
-        
+        env:
+          MOCK_METADATA_FILE: mock_metadata.json
