@@ -5,7 +5,7 @@ inputs:
   github-token:
     required: true
     description: "GitHub token for authentication."
-    default: ${{ github.token }}
+    default: "${{ github.token }}"
 runs:
   using: "composite"
   steps:
@@ -15,16 +15,16 @@ runs:
       with:
         alert-lookup: true
         compat-lookup: true
-        github-token: ${{ inputs.github-token }}
+        github-token: "${{ inputs.github-token }}"
     - name: Add a label for all production dependencies
       run: gh pr edit "$PR_URL" --add-label "production"
       env:
-        PR_URL: ${{ github.event.pull_request.html_url }}
-        GITHUB_TOKEN: ${{ inputs.github-token }}
+        PR_URL: "${{ github.event.pull_request.html_url }}"
+        GITHUB_TOKEN: "${{ inputs.github-token }}"
       shell: bash
     - name: Add a label for all development dependencies
       run: gh pr edit "$PR_URL" --add-label "development"
       env:
-        PR_URL: ${{ github.event.pull_request.html_url }}
-        GITHUB_TOKEN: ${{ inputs.github-token }}
+        PR_URL: "${{ github.event.pull_request.html_url }}"
+        GITHUB_TOKEN: "${{ inputs.github-token }}"
       shell: bash
