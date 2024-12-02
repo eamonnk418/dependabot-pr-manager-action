@@ -20,9 +20,11 @@ runs:
       run: gh pr edit "$PR_URL" --add-label "production"
       env:
         PR_URL: ${{ github.event.pull_request.html_url }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
       shell: bash
     - name: Add a label for all development dependencies
       run: gh pr edit "$PR_URL" --add-label "development"
       env:
         PR_URL: ${{ github.event.pull_request.html_url }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
       shell: bash
