@@ -9,11 +9,11 @@ on:
 
 jobs:
   pr-manager:
-    permissions:
-      pull-requests: read
     runs-on: ubuntu-latest
     steps:
       - name: Dependabot PR Manager
         uses: eamonnk418/dependabot-pr-manager-action@main
         with:
           github-token: ${{ secrets.github-token }}
+    permissions:
+      pull-requests: read
